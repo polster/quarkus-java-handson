@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  customer-management:
+    image: ecomm-ddd-micro/customer-management:1.0.0
+    environment:
+      - JAVA_TOOL_OPTIONS="-Dquarkus.profile=docker"
+    ports:
+      - "9080:8080"
+
+  shipping:
+    image: ecomm-ddd-micro/shipping:1.0.0
+    environment:
+      - JAVA_TOOL_OPTIONS="-Dquarkus.profile=docker"
+    ports:
+      - "9090:8090"

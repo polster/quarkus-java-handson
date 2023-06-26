@@ -1,0 +1,94 @@
+= eCommerce example with DDD and Quarkus
+:toc:
+
+== Prerequisites
+
+The following tool-chain is needed (may use _sdkman_ for easy installation):
+
+* Java 17
+* Maven 3.8
+* quarkus 2.10
+* make
+* Docker compose
+* direnv
+
+== Get Started
+
+* Git clone this repo and `cd` into this project folder
+* Hook-up the local infrastructure with Docker compose:
+[source,bash]
+----
+make docker-compose-up
+----
+* Build and start the microservices (in separate terminal sessions):
+[source,bash]
+----
+make application-start APP=customer-management
+make application-start APP=shipping
+----
+* Check the following URLs and explore (credentials in the link:project-resources/docker-compose/local-dev-infra.yml[Docker compose file]):
+** http://localhost:8090/q/swagger-ui/[Shipping API]
+** http://localhost:8080/q/swagger-ui/[Customer Management API]
+** http://localhost:8082/[MongoDB]
+** http://localhost:8083/[RabbitMQ]
+
+== Hints
+
+=== Go Containerized
+
+Batteries included, this sample application also allows dockerizing the services with https://github.com/GoogleContainerTools/jib[Jib].
+
+* Give it a try:
+[source,bash]
+----
+# build the services
+make docker-build APP=customer-management
+make docker-build APP=shipping
+
+# start services
+make docker-services-up
+----
+* Check the following URLs:
+** http://localhost:9090/q/swagger-ui/[Shipping API]
+** http://localhost:9080/q/swagger-ui/[Customer Management API]
+
+=== New Microservice
+
+To setup a new microservice, do the following:
+
+[source,bash]
+----
+# cd into the services dir
+cd services
+
+# generate baseline project
+quarkus create app \
+  io.dietschi.dddwithquarkus.ecommerce:shipping \
+  --extension=resteasy-reactive-jackson \
+  --no-code
+----
+
+=== Extensions
+
+Managing quarkus extensions is quite easy, where under the hood, a maven POM is being configured (dependencies):
+
+[source,bash]
+----
+# cd into one of the microservice dirs
+cd services/shipping
+
+# print installed dependencies
+quarkus ext list
+
+# add an extensions
+quarkus ext add mongodb-panache
+----
+
+=== Offline development
+
+Just in case you want to develop offline (will download all Maven dependencies):
+
+[source,bash]
+----
+mvn quarkus:go-offline
+----
