@@ -1,17 +1,11 @@
 package io.dietschi.dddwithquarkus.ecommerce.shipments.web.shipment;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import io.dietschi.dddwithquarkus.ecommerce.shipments.repository.recipient.Recipient;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.repository.recipient.RecipientRepository;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.repository.shipment.ShipmentRepository;
 import io.smallrye.mutiny.Uni;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;

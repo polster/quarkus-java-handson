@@ -1,9 +1,8 @@
 package io.dietschi.dddwithquarkus.ecommerce.shipments.repository.shipment;
 
-import javax.enterprise.context.ApplicationScoped;
-
 import io.quarkus.mongodb.panache.reactive.ReactivePanacheMongoRepository;
 import io.smallrye.mutiny.Uni;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class ShipmentRepository implements ReactivePanacheMongoRepository<Shipment> {

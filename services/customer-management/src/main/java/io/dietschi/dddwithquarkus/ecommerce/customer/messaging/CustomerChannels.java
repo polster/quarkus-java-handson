@@ -1,7 +1,7 @@
 package io.dietschi.dddwithquarkus.ecommerce.customer.messaging;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import io.dietschi.dddwithquarkus.ecommerce.customer.event.CustomerCreatedEvent;
 import org.eclipse.microprofile.reactive.messaging.Channel;

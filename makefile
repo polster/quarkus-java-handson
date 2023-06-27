@@ -4,6 +4,11 @@ COMPOSE_FILE_INFRA="./project-resources/docker-compose/local-dev-infra.yml"
 COMPOSE_FILE_SERVICES="./project-resources/docker-compose/local-dev-services.yml"
 SERVICES_PATH="./services"
 
+docker-infra-status:
+	docker ps -a \
+		--filter "name=${COMPOSE_PROJECT_NAME}*" \
+		--format "table {{.ID}}\t{{.Names}}\t{{.Status}}"
+
 docker-infra-up:
 	docker-compose -f ${COMPOSE_FILE_INFRA} up -d
 
@@ -23,6 +28,7 @@ docker-build:
 	mvn -f "${SERVICES_PATH}/$(APP)/pom.xml" -Dquarkus.profile=docker clean install
 
 .PHONY: docker-infra-up \
+	docker-infra-status \
 	docker-services-up \
 	docker-infra-down \
 	docker-services-down \

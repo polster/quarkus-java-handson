@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
-@Mapper(componentModel = "cdi")
+@Mapper(componentModel = "jakarta")
 public interface RecipientMapper {
 
     @Mapping(source = "address", target = "recipientAddress", qualifiedByName = "toModelAddress")

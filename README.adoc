@@ -7,7 +7,7 @@ The following tool-chain is needed (may use _sdkman_ for easy installation):
 
 * Java 17
 * Maven 3.8
-* quarkus 2.10
+* quarkus 3.1
 * make
 * Docker compose
 * direnv

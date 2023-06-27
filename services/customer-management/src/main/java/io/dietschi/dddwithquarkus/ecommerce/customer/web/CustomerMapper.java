@@ -2,7 +2,7 @@ package io.dietschi.dddwithquarkus.ecommerce.customer.web;
 
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "cdi")
+@Mapper(componentModel = "jakarta")
 public interface CustomerMapper {
 
     Customer toResource(io.dietschi.dddwithquarkus.ecommerce.customer.repository.Customer customer);

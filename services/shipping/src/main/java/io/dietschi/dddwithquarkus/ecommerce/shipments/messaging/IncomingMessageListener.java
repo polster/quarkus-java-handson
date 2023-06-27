@@ -1,15 +1,12 @@
 package io.dietschi.dddwithquarkus.ecommerce.shipments.messaging;
 
-import javax.enterprise.context.ApplicationScoped;
-
-import io.dietschi.dddwithquarkus.ecommerce.shipments.access.Address;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.access.Customer;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.access.CustomerResourceClient;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.events.incoming.CustomerCreatedEvent;
 import io.dietschi.dddwithquarkus.ecommerce.shipments.repository.recipient.RecipientRepository;
 import io.quarkus.logging.Log;
-import io.smallrye.mutiny.Uni;
 import io.vertx.core.json.JsonObject;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
